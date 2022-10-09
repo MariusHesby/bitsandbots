@@ -1,5 +1,4 @@
 import Logo from "../layout/Logo";
-import Cat from "../layout/Cat";
 import Nav from "../layout/Nav";
 
 function Header() {
@@ -11,7 +10,6 @@ function Header() {
           <Nav />
         </div>
       </div>
-      <Cat />
     </>
   );
 }

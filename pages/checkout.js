@@ -1,17 +1,15 @@
 import Header from "../components/layout/Header";
-import Results from "../components/layout/Results";
 import Footer from "../components/layout/Footer";
+import Checkout from "../components/layout/Checkout";
 import requests from "../utils/requests";
-import Cat from "../components/layout/Cat";
 
 const defaultUrl = "https://api.rawg.io/api";
 
-export default function Home({ results }) {
+export default function Cart() {
   return (
     <div>
       <Header />
-      <Cat />;
-      <Results results={results} />
+      <Checkout />
       <Footer />
     </div>
   );

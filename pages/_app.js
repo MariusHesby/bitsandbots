@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import { AuthProvider } from "../context/AuthContext";
 import React, { useEffect } from "react";
-import Head from "../components/layout/head";
+import Head from "../components/layout/Head";
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
