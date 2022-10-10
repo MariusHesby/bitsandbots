@@ -7,7 +7,7 @@ const defaultUrl = "https://api.rawg.io/api";
 
 export default function Cart() {
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       <Header />
       <Checkout />
       <Footer />

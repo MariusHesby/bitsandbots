@@ -4,7 +4,10 @@
 
 @layer components {
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth min-h-full;
+  }
+  body {
+    @apply bg-slate-100 min-h-full flex flex-col;
   }
   a {
     @apply transition-all duration-200 ease-in-out;
@@ -13,7 +16,7 @@
     @apply text-3xl font-bold my-10;
   }
   h2 {
-    @apply mt-20 text-3xl font-bold;
+    @apply text-3xl font-bold;
   }
   .cat {
     @apply cursor-pointer transition duration-100 transform bg-bitsBlue px-4 py-2 rounded-full text-white border-8 border-white hover:border-yellow-400;

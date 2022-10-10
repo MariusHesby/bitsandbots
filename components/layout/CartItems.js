@@ -11,7 +11,7 @@ function CartItems({ results }) {
           <ThumbnailCart key={result.id} result={result} />
         ))}
         <Link href="/checkout">
-          <div class="flex space-x-2 my-10">
+          <div className="flex space-x-2 my-10">
             <button
               type="button"
               data-mdb-ripple="true"

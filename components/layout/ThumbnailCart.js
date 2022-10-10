@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function ThumbnailCart({ result }) {
   return (
-    <div className="flex space-x-2 mb-5 odd:bg-blue-50 items-center">
+    <div className="flex space-x-2 mb-5 odd:bg-white even:bg-gray-100 shadow-lg items-center hover:bg-yellow-100">
       <Link href="/game/$[id]" as={`/game/${result.id}`}>
         <div className="w-40 cursor-pointer relative">
           <Image

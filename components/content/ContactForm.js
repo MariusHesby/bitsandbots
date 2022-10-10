@@ -1,93 +1,183 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-
+import {
+  CalendarDaysIcon,
+  LockClosedIcon,
+  CreditCardIcon,
+} from "@heroicons/react/24/solid";
+// import valid from "card-validator"; //import statement
 
 const schema = yup.object().shape({
-    firstName: yup.string().min(3, "First name must be at least 3 characters"),
-    lastName: yup.string().min(4, "Last name must be at least 3 characters").required("Please enter your first name").required("Please enter your last name"),
-    email: yup.string().email("E-mail must be valid").required("Please enter your e-mail"),
-    subject: yup.string().required("Please choose a subject"),
-    message: yup.string().min(10, "Message must be at least 10 characters").required("Please enter a message"),
+  fullName: yup
+    .string()
+    .min(6, "Full name must be at least 6 characters")
+    .required("Please enter your full name"),
+  address: yup
+    .string()
+    .min(6, "Address must be at least 6 characters")
+    .required("Please enter your address"),
 
+  // creditCard: yup
+  //   .string()
+  //   .test(
+  //     "test-number", // this is used internally by yup
+  //     "Credit Card number is invalid", //validation message
+  //     (value) => valid.number(value).isValid
+  //   ) // return true false based on validation
+  //   .required(),
 
-    // age: yup.number().required("Please enter your age").min(10, "Age must be between 10 and 20"),
-    // website: yup.string().required("Please enter your e-mail").min(10, "The e-mail must be a valid URL"),
+  creditCard: yup
+    .number()
+    .min(15, "CC must be 16 digits")
+    .max(17, "CC must be 16 digits")
+    .required("Please enter your credit-card details"),
+
+  // creditCard: yup
+  //   .number()
+  //   .min(16, "CC must be valid")
+  //   .required("Please enter your credit-card details"),
 });
 
 function ContactForm() {
-    const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver(schema),
-    });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-    function onSubmit(data) {
-        console.log(data);
-    }
+  function onSubmit(data) {
+    console.log(data);
+  }
 
-    console.log(errors);
+  console.log(errors);
 
-    return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="mb-20">
+        {/* --- NAME --- */}
+        <div className="mb-3 relative max-w-xl flex flex-col">
+          <label htmlFor="fullName" className="mb-1">
+            <span className="font-bold mb-3">Full name</span>
+          </label>
+          <input
+            type="text"
+            {...register("fullName", { required: true })}
+            className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
+            id="fullName"
+            name="fullName"
+            placeholder="Your name"
+          />
+          {errors.fullName && (
+            <span className="block text-red-600">
+              {errors.fullName.message}
+            </span>
+          )}
+        </div>
+        {/* --- ADDRESS --- */}
+        <div className="mb-3 relative max-w-xl flex flex-col">
+          <label htmlFor="address" className="mb-1">
+            <span className="font-bold mb-3">Address</span>
+          </label>
+          <input
+            type="text"
+            {...register("address", { required: true })}
+            className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
+            id="address"
+            name="address"
+            placeholder="You address"
+          />
+          {errors.address && (
+            <span className="block text-red-600">{errors.address.message}</span>
+          )}
+        </div>
+      </div>
+      {/* --- CARD DETAILS --- */}
+      {/* CARD NUMBER */}
+      <div className="mb-3 relative max-w-xl flex flex-col">
+        <label htmlFor="creditCard" className="mb-1">
+          <span className="font-bold mb-3">Card number</span>
+        </label>
 
-            <div className="mb-3">
-                <label htmlFor="firstName" className="block mb-1">First name</label>
-                <input type="text" {...register("firstName", { required: true })} className="border border-black p-1 rounded max-w-full" id="firstName" />
-                {errors.firstName && <span className="block text-red-600">{errors.firstName.message}</span>}
-            </div>
+        <input
+          type="text"
+          {...register("creditCard", { required: true })}
+          className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
+          id="creditCard"
+          name="creditCard"
+          placeholder="0000 0000 0000 0000"
+        />
+        <CreditCardIcon className="absolute bottom-0 left-0 -mb-0.5 transform translate-x-1/2 -translate-y-1/2 text-black peer-placeholder-shown:text-gray-300 h-6 w-6" />
+      </div>
+      {errors.creditCard && (
+        <span className="block text-red-600">{errors.creditCard.message}</span>
+      )}
+      {/* EXPIRE DATE */}
+      <div className="mb-3 relative max-w-xl flex flex-col">
+        <label htmlFor="expireDate" className="mb-1">
+          <span className="font-bold mb-3">Expire date</span>
+        </label>
 
+        <input
+          type="text"
+          {...register("expireDate", { required: true })}
+          className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
+          id="expireDate"
+          name="expireDate"
+          placeholder="MM/YY"
+        />
+        <CalendarDaysIcon className="absolute bottom-0 left-0 -mb-0.5 transform translate-x-1/2 -translate-y-1/2 text-black peer-placeholder-shown:text-gray-300 h-6 w-6" />
+      </div>
+      {errors.expireDate && (
+        <span className="block text-red-600">{errors.expireDate.message}</span>
+      )}
+      {/* CCV */}
+      <div className="mb-10 relative max-w-xl flex flex-col">
+        <label htmlFor="ccv" className="mb-1">
+          <span className="font-bold mb-3">CVC / CVV</span>
+        </label>
 
-            <div className="mb-3">
-                <label htmlFor="lastName" className="block">Last name</label>
-                <input type="text" {...register("lastName", { required: true })} className="border border-black p-1 rounded max-w-full" id="lastName" />
-                {errors.lastName && <span className="block text-red-600">{errors.lastName.message}</span>}
-            </div>
+        <input
+          type="number"
+          className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
+          id="ccv"
+          name="ccv"
+          placeholder="&bull;&bull;&bull;"
+        />
+        <LockClosedIcon className="absolute bottom-0 left-0 -mb-0.5 transform translate-x-1/2 -translate-y-1/2 text-black peer-placeholder-shown:text-gray-300 h-6 w-6" />
+      </div>
+      {errors.ccv && (
+        <span className="block text-red-600">{errors.ccv.message}</span>
+      )}
+      {/* </form> */}
 
-            {/* FIX */}
-            <div className="mb-3">
-                <label htmlFor="email" className="block">E-mail</label>
-                <input type="text" {...register("email", { required: true })} className="border border-black p-1 rounded max-w-full" id="email" />
-                {errors.email && <span className="block text-red-600">{errors.email.message}</span>}
-            </div>
+      {/* <div className="mb-10">
+        <label htmlFor="creditCard" className="block">
+          Credit Card
+        </label>
+        <input
+          type="text"
+          {...register("creditCard", { required: true })}
+          className="border border-black p-1 rounded max-w-full"
+          id="creditCard"
+        />
+        {errors.creditCard && (
+          <span className="block text-red-600">
+            {errors.creditCard.message}
+          </span>
+        )}
+      </div> */}
 
-            {/* FIX */}
-            <div className="mb-3">
-                <label htmlFor="subject" className="block">Subject</label>
-                <select name="Subject" {...register("subject", { required: true })} className="border border-black p-1 rounded max-w-full" id="subject">
-                    <option value={""}>What is the darn subject?</option>
-                    <option value="Mr">I have happy things to say</option>
-                    <option value="Mrs">I have supersad things to say</option>
-                </select>
-
-
-                {/* <label htmlFor="subject" className="block">Subject</label>
-                <input type="text" {...register("subject", { required: true })} className="border border-black p-1 rounded" id="subject" /> */}
-                {errors.subject && <span className="block text-red-600">{errors.subject.message}</span>}
-            </div>
-
-
-
-            {/* <label>Title</label>
-            <select name="Title" {...register("title", { required: true })}>
-                <option value="Mr">Mr</option>
-                <option value="Mrs">Mrs</option>
-                <option value="Miss">Miss</option>
-                <option value="Dr">Dr</option>
-            </select> */}
-
-
-
-
-            {/* FIX */}
-            <div className="mb-10">
-                <label htmlFor="message" className="block">Message</label>
-                <textarea rows="4" cols="50" {...register("message", { required: true })} className="border border-black p-1 rounded max-w-full" id="message" />
-                {errors.message && <span className="block text-red-600">{errors.message.message}</span>}
-            </div>
-
-
-            <button type="submit" className="px-3 py-2 border border-black bg-blue-600 text-white rounded">Submit</button>
-        </form>
-    );
+      <button
+        type="submit"
+        className="px-3 py-2 border border-black bg-blue-600 text-white rounded"
+      >
+        Submit
+      </button>
+    </form>
+  );
 }
 
 export default ContactForm;
