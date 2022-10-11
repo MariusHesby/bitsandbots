@@ -8,6 +8,8 @@ import {
 } from "@heroicons/react/24/solid";
 // import valid from "card-validator"; //import statement
 
+import Modal from "../common/Modal";
+
 const schema = yup.object().shape({
   fullName: yup
     .string()
@@ -27,11 +29,11 @@ const schema = yup.object().shape({
   //   ) // return true false based on validation
   //   .required(),
 
-  creditCard: yup
-    .number()
-    .min(15, "CC must be 16 digits")
-    .max(17, "CC must be 16 digits")
-    .required("Please enter your credit-card details"),
+  // creditCard: yup
+  //   .number()
+  //   .min(15, "CC must be 16 digits")
+  //   .max(17, "CC must be 16 digits")
+  //   .required("Please enter your credit-card details"),
 
   // creditCard: yup
   //   .number()
@@ -39,7 +41,7 @@ const schema = yup.object().shape({
   //   .required("Please enter your credit-card details"),
 });
 
-function ContactForm() {
+function ContactForm({ setShowModal }) {
   const {
     register,
     handleSubmit,
@@ -50,53 +52,57 @@ function ContactForm() {
 
   function onSubmit(data) {
     console.log(data);
+    setShowModal(true);
   }
 
   console.log(errors);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="mb-20">
-        {/* --- NAME --- */}
-        <div className="mb-3 relative max-w-xl flex flex-col">
-          <label htmlFor="fullName" className="mb-1">
-            <span className="font-bold mb-3">Full name</span>
-          </label>
-          <input
-            type="text"
-            {...register("fullName", { required: true })}
-            className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
-            id="fullName"
-            name="fullName"
-            placeholder="Your name"
-          />
-          {errors.fullName && (
-            <span className="block text-red-600">
-              {errors.fullName.message}
-            </span>
-          )}
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="mb-20">
+          {/* --- NAME --- */}
+          <div className="mb-3 relative max-w-xl flex flex-col">
+            <label htmlFor="fullName" className="mb-1">
+              <span className="font-bold mb-3">Full name</span>
+            </label>
+            <input
+              type="text"
+              {...register("fullName", { required: true })}
+              className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
+              id="fullName"
+              name="fullName"
+              placeholder="Your name"
+            />
+            {errors.fullName && (
+              <span className="block text-red-600">
+                {errors.fullName.message}
+              </span>
+            )}
+          </div>
+          {/* --- ADDRESS --- */}
+          <div className="mb-3 relative max-w-xl flex flex-col">
+            <label htmlFor="address" className="mb-1">
+              <span className="font-bold mb-3">Address</span>
+            </label>
+            <input
+              type="text"
+              {...register("address", { required: true })}
+              className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
+              id="address"
+              name="address"
+              placeholder="You address"
+            />
+            {errors.address && (
+              <span className="block text-red-600">
+                {errors.address.message}
+              </span>
+            )}
+          </div>
         </div>
-        {/* --- ADDRESS --- */}
-        <div className="mb-3 relative max-w-xl flex flex-col">
-          <label htmlFor="address" className="mb-1">
-            <span className="font-bold mb-3">Address</span>
-          </label>
-          <input
-            type="text"
-            {...register("address", { required: true })}
-            className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
-            id="address"
-            name="address"
-            placeholder="You address"
-          />
-          {errors.address && (
-            <span className="block text-red-600">{errors.address.message}</span>
-          )}
-        </div>
-      </div>
-      {/* --- CARD DETAILS --- */}
-      {/* CARD NUMBER */}
-      <div className="mb-3 relative max-w-xl flex flex-col">
+        {/* --- CARD DETAILS --- */}
+
+        {/* <div className="mb-3 relative max-w-xl flex flex-col">
         <label htmlFor="creditCard" className="mb-1">
           <span className="font-bold mb-3">Card number</span>
         </label>
@@ -114,14 +120,14 @@ function ContactForm() {
       {errors.creditCard && (
         <span className="block text-red-600">{errors.creditCard.message}</span>
       )}
-      {/* EXPIRE DATE */}
+
       <div className="mb-3 relative max-w-xl flex flex-col">
         <label htmlFor="expireDate" className="mb-1">
           <span className="font-bold mb-3">Expire date</span>
         </label>
 
         <input
-          type="text"
+          type="number"
           {...register("expireDate", { required: true })}
           className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
           id="expireDate"
@@ -133,7 +139,7 @@ function ContactForm() {
       {errors.expireDate && (
         <span className="block text-red-600">{errors.expireDate.message}</span>
       )}
-      {/* CCV */}
+
       <div className="mb-10 relative max-w-xl flex flex-col">
         <label htmlFor="ccv" className="mb-1">
           <span className="font-bold mb-3">CVC / CVV</span>
@@ -150,10 +156,10 @@ function ContactForm() {
       </div>
       {errors.ccv && (
         <span className="block text-red-600">{errors.ccv.message}</span>
-      )}
-      {/* </form> */}
+      )} */}
+        {/* </form> */}
 
-      {/* <div className="mb-10">
+        {/* <div className="mb-10">
         <label htmlFor="creditCard" className="block">
           Credit Card
         </label>
@@ -170,13 +176,11 @@ function ContactForm() {
         )}
       </div> */}
 
-      <button
-        type="submit"
-        className="px-3 py-2 border border-black bg-blue-600 text-white rounded"
-      >
-        Submit
-      </button>
-    </form>
+        <button className="bg-blue-500 text-white py-3 px-5" type="submit">
+          Submit
+        </button>
+      </form>
+    </>
   );
 }
 

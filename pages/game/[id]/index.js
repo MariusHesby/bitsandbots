@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -5,15 +6,65 @@ import Header from "../../../components/layout/Header";
 // import requests from '../../../utils/requests';
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import Footer from "../../../components/layout/Footer";
-// import { useState } from 'react'
 
-// const corsFix = "https://noroffcors.herokuapp.com/";
+const API_KEY = process.env.API_KEY;
 const url = "https://api.rawg.io/api/games";
 const defaultUrl = url;
 
 export default function Game({ data }) {
-  console.log(data);
-  const { name, description, background_image } = data;
+  const [cart, setCart] = useState([]);
+  const [inCart, setInCart] = useState(false);
+
+  const { name, description_raw, background_image } = data;
+
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart"));
+    if (!storedCart) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+      setCart([]);
+      return;
+    }
+    setCart(storedCart);
+    setInCart(storedCart.some((game) => game.id === data.id));
+    console.log(inCart);
+    console.log(cart);
+  }, [inCart]);
+
+  const toggleAddToCartHandler = () => {
+    const cartInStorage = JSON.parse(localStorage.getItem("cart"));
+
+    console.log(cartInStorage);
+
+    if (!cartInStorage) {
+      setCart([data]);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      return;
+    }
+
+    const alreadyInCart = cartInStorage.find((game) => game.id === data.id);
+
+    if (alreadyInCart) {
+      const filteredCart = cartInStorage.filter((game) => game.id !== data.id);
+      localStorage.setItem("cart", JSON.stringify(filteredCart));
+      setInCart(!inCart);
+      return;
+    }
+
+    cartInStorage.push(data);
+
+    localStorage.setItem("cart", JSON.stringify(cartInStorage));
+    setInCart(!inCart);
+  };
+
+  const defaultDivStyles =
+    "absolute top-0 right-0 bg-white p-3 m-3 rounded-full flex justify-items-center";
+
+  const inCartDivStyles =
+    "absolute top-0 right-0 bg-[#229D30] p-3 m-3 rounded-full flex justify-items-center";
+
+  const defaultIconStyles = "w-10 mx-auto hover:scale-125";
+  const inCartIconStyles = "w-10 mx-auto text-white hover:scale-125";
+
   return (
     <>
       <Head>
@@ -37,14 +88,18 @@ export default function Game({ data }) {
               width={2560}
             />
           </div>
-          <div className="absolute top-0 right-0 bg-white p-3 m-3 rounded-full flex justify-items-center">
-            <ShoppingCartIcon className="w-10 mx-auto text-[#229D30] hover:scale-125" />
+          <div
+            className={inCart ? inCartDivStyles : defaultDivStyles}
+            onClick={toggleAddToCartHandler}
+          >
+            <ShoppingCartIcon
+              className={inCart ? inCartIconStyles : defaultIconStyles}
+            />
           </div>
         </div>
-        <div
-          className="game-info"
-          dangerouslySetInnerHTML={{ __html: description }}
-        ></div>
+        <div className="game-info p-10">
+          <article>{description_raw}</article>
+        </div>
       </div>
       <Footer />
     </>
@@ -53,9 +108,7 @@ export default function Game({ data }) {
 
 export async function getServerSideProps({ query }) {
   const { id } = query;
-  const res = await fetch(
-    `${defaultUrl}/${id}?key=506621b238824dd1982262dee58189ca`
-  );
+  const res = await fetch(`${defaultUrl}/${id}?key=${API_KEY}`);
   const data = await res.json();
   console.log(data);
 

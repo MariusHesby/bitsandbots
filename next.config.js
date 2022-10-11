@@ -1,14 +1,14 @@
 /** @type {import('next').NextConfig} */
 
-const redirects = async () => {
-  return [
-    {
-      source: "/",
-      destination: "/login",
-      permanent: true,
-    },
-  ];
-};
+// const redirects = async () => {
+//   return [
+//     {
+//       source: "/",
+//       destination: "/",
+//       permanent: true,
+//     },
+//   ];
+// };
 
 const nextConfig = {
   reactStrictMode: true,
@@ -16,7 +16,7 @@ const nextConfig = {
   images: {
     domains: ["media.rawg.io"],
   },
-  redirects: redirects,
+  // redirects: redirects,
 };
 
 module.exports = nextConfig;

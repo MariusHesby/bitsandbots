@@ -12,7 +12,10 @@ import Link from "next/link";
 const url = WP_BASE_URL + TOKEN_PATH;
 
 const schema = yup.object().shape({
-  username: yup.string().required("Please enter your username"),
+  email: yup
+    .string()
+    .required("Please enter your email")
+    .email("Please enter a valid email"),
   password: yup.string().required("Please enter your password"),
 });
 
@@ -36,17 +39,27 @@ export default function LoginForm() {
     setSubmitting(true);
     setLoginError(null);
 
-    try {
-      const response = await axios.post(url, data);
-      console.log("response", response.data);
-      setAuth(response.data);
-      history.push("/");
-    } catch (error) {
-      console.log("error", error);
-      setLoginError(error.toString());
-    } finally {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) {
+      setLoginError("You haven't registered yet, please register first");
       setSubmitting(false);
+      return;
     }
+
+    if (user.password !== data.password) {
+      setLoginError("Invalid credentials, please try again");
+      setSubmitting(false);
+      return;
+    }
+
+    setAuth({
+      isAuthenticated: true,
+      user,
+    });
+
+    setSubmitting(false);
+    history.push("/");
   }
 
   return (
@@ -57,21 +70,19 @@ export default function LoginForm() {
       >
         {loginError && <FormError>{loginError}</FormError>}
         <fieldset disabled={submitting}>
-          {/* Username */}
+          {/* Email */}
           <div className="row mb-4 flex flex-col ">
-            <label htmlFor="username" className=" col-form-label mb-3 ">
-              Username
+            <label htmlFor="email" className=" col-form-label mb-3 ">
+              Email
             </label>
             <input
-              name="username"
-              placeholder="Username"
-              {...register("username")}
-              id="username"
+              name="email"
+              placeholder="Email"
+              {...register("email")}
+              id="email"
               className="border border-black p-2"
             />
-            {errors.username && (
-              <FormError>{errors.username.message}</FormError>
-            )}
+            {errors.email && <FormError>{errors.email.message}</FormError>}
           </div>
           {/* Password */}
           <div className="row mb-4 flex flex-col">

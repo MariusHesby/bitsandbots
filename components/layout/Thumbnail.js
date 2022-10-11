@@ -1,11 +1,42 @@
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 
-function Thumbnail({ result }) {
+function Thumbnail({ result, cart, toggleAddToCartHandler }) {
+  const [inCart, setInCart] = useState(false);
+
+  const defaultDivClasses =
+    "absolute top-5 right-5 bg-white p-2 m-2 rounded-full flex justify-items-center z-50";
+
+  const inCartDivClasses =
+    "absolute top-5 right-5 bg-[#229D30] p-2 m-2 rounded-full flex justify-items-center z-50";
+
+  const inCartIconClasses = "w-7 mx-auto hover:scale-125 text-white";
+
+  const defaultIconClasses = "w-7 mx-auto hover:scale-125 text-black";
+
+  useEffect(() => {
+    setInCart(cart.some((game) => game.id === result.id));
+  }, [cart]);
+
+  const addToCartHandler = (result) => {
+    toggleAddToCartHandler(result);
+    setInCart(!inCart);
+  };
+
   return (
-    <Link href="/game/$[id]" as={`/game/${result.id}`}>
-      <a>
+    <article className="relative">
+      <div
+        className={inCart ? inCartDivClasses : defaultDivClasses}
+        onClick={() => addToCartHandler(result)}
+      >
+        <ShoppingCartIcon
+          className={inCart ? inCartIconClasses : defaultIconClasses}
+        />
+      </div>
+
+      <Link href="/game/$[id]" as={`/game/${result.id}`}>
         <div className="p-2 sm:p-5 group cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50">
           <div className="relative">
             <Image
@@ -15,9 +46,6 @@ function Thumbnail({ result }) {
               height={1440}
               width={2560}
             />
-            <div className="absolute top-0 right-0 bg-white p-2 m-2 rounded-full flex justify-items-center">
-              <ShoppingCartIcon className="w-7 mx-auto text-black hover:scale-125" />
-            </div>
           </div>
 
           <div className="p-2">
@@ -29,8 +57,8 @@ function Thumbnail({ result }) {
             </p>
           </div>
         </div>
-      </a>
-    </Link>
+      </Link>
+    </article>
   );
 }
 

@@ -1,6 +1,13 @@
+import { useState, useEffect } from "react";
 import ContactForm from "../content/ContactForm";
 
-function Checkout() {
+function Checkout({ setShowModal }) {
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    setCart(JSON.parse(localStorage.getItem("cart")));
+  }, []);
+
   return (
     <>
       <div className="flex justify-center my-20 mx-5">
@@ -10,14 +17,14 @@ function Checkout() {
             <p className="text-2xl">
               You have
               <span className="border-2 border-blue-600 rounded-full px-3 pt-2 pb-1 mx-3 font-bold">
-                7
+                {cart.length}
               </span>
-              items
+              {cart.length === 1 ? "item" : "items"}
             </p>
 
             <p className="text-2xl">in your shopping-cart</p>
           </div>
-          <ContactForm />
+          <ContactForm setShowModal={setShowModal} />
         </div>
       </div>
     </>

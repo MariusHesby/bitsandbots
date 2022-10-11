@@ -18,7 +18,12 @@ function Nav() {
   const history = useRouter();
 
   function logout() {
-    setAuth(null);
+    localStorage.removeItem("cart");
+    setAuth({
+      isAuthenticated: false,
+      user: null,
+    });
+
     history.push("/login");
   }
 
