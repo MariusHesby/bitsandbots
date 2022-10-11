@@ -62,60 +62,64 @@ function RegisterForm() {
           Register success, redirecting...
         </p>
       )}
-      <div className="row mb-4">
-        <label htmlFor="email" className="row-sm-2 col-form-label">
+      {/* Email */}
+      <div className="row mb-4 flex flex-col ">
+        <label htmlFor="email" className="col-form-label mb-3 ">
           Email
         </label>
-        <div className="col-sm">
-          <input
-            type="text"
-            className="form-control border"
-            id="email"
-            name="email"
-            {...register("email")}
-          />
-        </div>
+        <input
+          name="email"
+          placeholder="Email"
+          {...register("email")}
+          id="email"
+          type="text"
+          className="border border-black p-2"
+        />
+        {errors.email && <FormError>{errors.email.message}</FormError>}
       </div>
-      {errors.email && <FormError>{errors.email.message}</FormError>}
-
-      <div className="row mb-4">
-        <label htmlFor="register-password" className="row-sm-2 col-form-label">
+      {/* Password */}
+      <div className="row mb-4 flex flex-col ">
+        <label htmlFor="register-password" className="col-form-label mb-3 ">
           Password
         </label>
-        <div className="col-sm">
-          <input
-            type="password"
-            className="form-control"
-            id="register-password"
-            {...register("password")}
-          />
-        </div>
+
+        <input
+          name="password"
+          placeholder="Password"
+          {...register("password")}
+          id="register-password"
+          type="password"
+          className="border border-black p-2"
+        />
+        {errors.password && <FormError>{errors.password.message}</FormError>}
       </div>
 
-      {errors.password && <FormError>{errors.password.message}</FormError>}
-
-      <div className="row mb-4">
+      {/* Confirm 1Password */}
+      <div className="row mb-4 flex flex-col ">
         <label
           htmlFor="register-confirm-password"
-          className="row-sm-2 col-form-label"
+          className="col-form-label mb-3"
         >
-          Password
+          Confirm password
         </label>
-        <div className="col-sm">
-          <input
-            type="password"
-            className="form-control"
-            id="register-confirm-password"
-            {...register("password2")}
-          />
-        </div>
-      </div>
 
-      {errors.password2 && <FormError>{errors.password2.message}</FormError>}
+        <input
+          name="register-confirm-password"
+          placeholder="Confirm password"
+          {...register("password2")}
+          id="register-confirm-password"
+          type="password"
+          className="border border-black p-2"
+        />
+        {errors.password2 && <FormError>{errors.password2.message}</FormError>}
+      </div>
 
       <Link href="/login" passHref>
         <a>
-          <button type="submit" className="btn btn-light mr-5">
+          <button
+            type="submit"
+            className="border border-transparent px-3 py-2 rounded-md mr-5 hover:border-black"
+          >
             Login
           </button>
         </a>
@@ -123,7 +127,7 @@ function RegisterForm() {
 
       <button
         type="submit"
-        className="border border-transparent px-3 py-2 rounded-md mr-5 hover:border-black"
+        className="bg-bitsBlue text-white px-3 py-2 rounded-md mr-5 hover:bg-bitsBlueLight"
       >
         Register
       </button>

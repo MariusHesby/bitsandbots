@@ -176,7 +176,10 @@ function ContactForm({ setShowModal }) {
         )}
       </div> */}
 
-        <button className="bg-blue-500 text-white py-3 px-5" type="submit">
+        <button
+          className="bg-green-600 hover:bg-green-700 text-white py-3 px-5 rounded-lg"
+          type="submit"
+        >
           Submit
         </button>
       </form>

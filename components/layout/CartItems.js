@@ -24,7 +24,6 @@ function CartItems() {
     <>
       <div className="px-5 my-10 flex flex-col max-w-6xl mx-auto">
         <h1>Shopping cart</h1>
-        {/* <div className="px-5 my-10 sm:grid md:grid-cols-5 xl:grid-cols-6 3xl:flex flex-wrap justify-center"> */}
         {cart.length > 0 ? (
           cart.map((game) => (
             <ThumbnailCart
@@ -34,7 +33,7 @@ function CartItems() {
             />
           ))
         ) : (
-          <h2>No items in cart</h2>
+          <h3>No items in cart</h3>
         )}
         <Link href="/checkout">
           <div className="flex space-x-2 my-10">

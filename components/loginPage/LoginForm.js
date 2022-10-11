@@ -65,8 +65,8 @@ export default function LoginForm() {
   return (
     <>
       <form
-        onSubmit={handleSubmit(onSubmit)}
         className="max-w-lg absolute w-full bg-white border-2 py-8 px-4 sm:rounded-xl bg-opacity-50 backdrop-blur-lg drop-shadow-lg"
+        onSubmit={handleSubmit(onSubmit)}
       >
         {loginError && <FormError>{loginError}</FormError>}
         <fieldset disabled={submitting}>
