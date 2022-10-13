@@ -32,7 +32,7 @@ function ImageSlider() {
         {/* Slide 1 */}
         <div className="carousel-item duration-500 active relative float-left w-full h-screen">
           <img
-            src="/assets/temp/1.jpg"
+            src="/assets/slider/1.webp"
             className="block object-cover w-screen h-full"
             alt="..."
           />
@@ -41,7 +41,7 @@ function ImageSlider() {
         {/* Slide 2 */}
         <div className="carousel-item duration-500 relative float-left w-full h-screen">
           <img
-            src="/assets/temp/2.jpg"
+            src="/assets/slider/2.webp"
             className="block object-cover w-screen h-full"
             alt="..."
           />
@@ -50,7 +50,7 @@ function ImageSlider() {
         {/* Slide 3 */}
         <div className="carousel-item duration-500 relative float-left w-full h-screen">
           <img
-            src="/assets/temp/1.jpg"
+            src="/assets/slider/3.webp"
             className="block object-cover w-screen h-full"
             alt="..."
           />

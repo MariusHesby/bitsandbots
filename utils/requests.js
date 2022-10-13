@@ -1,5 +1,3 @@
-// import Results from "../components/layout/Results";
-
 const API_KEY = process.env.API_KEY;
 
 export default {

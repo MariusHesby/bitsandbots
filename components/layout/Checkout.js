@@ -16,7 +16,7 @@ function Checkout({ setShowModal }) {
           <div className="mb-10">
             <p className="text-2xl">
               You have
-              <span className="border-2 border-blue-600 rounded-full px-3 pt-2 pb-1 mx-3 font-bold">
+              <span className="border-2 border-blue-600 rounded-lg px-2 py-1/2 mx-3 font-bold">
                 {cart.length}
               </span>
               {cart.length === 1 ? "item" : "items"}

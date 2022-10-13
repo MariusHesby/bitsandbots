@@ -7,7 +7,7 @@ function Cat() {
   return (
     <nav className="mx-auto px-5">
       <div className="flex space-x-10 overflow-scroll scrollbar-hide">
-        <div className="mt-12 justify-end flex px-5 xl:px-0 text-xl whitespace-nowrap space-x-5">
+        <div className="mt-12 justify-end flex px-5 xl:px-0 whitespace-nowrap space-x-5">
           {Object.entries(requests).map(([key, { title, url }]) => (
             <h3
               key={key}

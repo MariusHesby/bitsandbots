@@ -7,19 +7,19 @@
     @apply scroll-smooth min-h-full;
   }
   body {
-    @apply bg-slate-100 min-h-full flex flex-col;
+    @apply bg-slate-100 min-h-full flex flex-col font-poppins tracking-wider;
   }
   a {
     @apply transition-all duration-200 ease-in-out;
   }
   h1 {
-    @apply text-3xl font-bold my-10;
+    @apply text-3xl sm:text-4xl lg:text-5xl xl:text-6xl;
   }
   h2 {
     @apply text-3xl font-bold;
   }
   h3 {
-    @apply text-xl font-bold;
+    @apply text-xl;
   }
   .cat {
     @apply cursor-pointer transition duration-100 transform bg-bitsBlue px-4 py-2 rounded-full text-white border-8 border-slate-100 hover:border-yellow-400;
@@ -32,6 +32,9 @@
   }
   .logo-landingpage {
     @apply absolute top-5 left-5;
+  }
+  label {
+    @apply font-bold;
   }
   .game-info br,
   .game-info p {

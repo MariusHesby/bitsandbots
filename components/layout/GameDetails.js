@@ -1,17 +1,12 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Header from "../../../components/layout/Header";
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
-import Footer from "../../../components/layout/Footer";
 
-const API_KEY = process.env.API_KEY;
-const defaultUrl = "https://api.rawg.io/api/games";
-
-export default function Game({ data }) {
+export default function GameDetails({ data }) {
   const [cart, setCart] = useState([]);
   const [inCart, setInCart] = useState(false);
-
   const { name, description_raw, background_image } = data;
+  // const { name, description_raw, background_image } = data;
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart"));
@@ -62,48 +57,31 @@ export default function Game({ data }) {
   const inCartIconStyles = "w-10 mx-auto text-white hover:scale-125";
 
   return (
-    <>
-      <Header />
-      <div className="max-w-6xl mx-auto my-5">
-        <h2 className="py-2 sm:py-5 text-4xl font-bold">{name}</h2>
+    <div className="max-w-6xl mx-auto my-5">
+      <h2 className="py-2 sm:py-5 text-4xl font-bold">{name}</h2>
 
-        <div className="relative">
-          <div className="mb-10">
-            <Image
-              layout="intrinsic"
-              src={background_image}
-              alt="1"
-              height={1440}
-              width={2560}
-            />
-          </div>
-          <div
-            className={inCart ? inCartDivStyles : defaultDivStyles}
-            onClick={toggleAddToCartHandler}
-          >
-            <ShoppingCartIcon
-              className={inCart ? inCartIconStyles : defaultIconStyles}
-            />
-          </div>
+      <div className="relative">
+        <div className="mb-10">
+          <Image
+            layout="intrinsic"
+            src={background_image}
+            alt="1"
+            height={1440}
+            width={2560}
+          />
         </div>
-        <div className="game-info p-10">
-          <article>{description_raw}</article>
+        <div
+          className={inCart ? inCartDivStyles : defaultDivStyles}
+          onClick={toggleAddToCartHandler}
+        >
+          <ShoppingCartIcon
+            className={inCart ? inCartIconStyles : defaultIconStyles}
+          />
         </div>
       </div>
-      <Footer />
-    </>
+      <div className="game-info p-10">
+        <article>{description_raw}</article>
+      </div>
+    </div>
   );
-}
-
-export async function getServerSideProps({ query }) {
-  const { id } = query;
-  const res = await fetch(`${defaultUrl}/${id}?key=${API_KEY}`);
-  const data = await res.json();
-  console.log(data);
-
-  return {
-    props: {
-      data,
-    },
-  };
 }

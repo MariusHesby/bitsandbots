@@ -13,6 +13,10 @@ module.exports = {
         bitsGray: "#999",
         bitsGrayLight: "#ccc",
       },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        nabla: ["Nabla", "cursive"],
+      },
     },
   },
   plugins: [

@@ -29,7 +29,7 @@ const Modal = ({ setShowModal, purchaseConfirmed, setPurchaseConfirmed }) => {
   return (
     <div className="fixed top-0 left-0 w-screen h-screen bg-gray-700 bg-opacity-70 z-40 flex items-center justify-center">
       {!purchaseConfirmed && (
-        <div className="w-auto h-1/2 lg:w-1/3 lg:h-1/3 bg-white p-5 flex flex-col justify-center rounded-sm shadow-2xl">
+        <div className="w-auto h-auto bg-white p-10 flex flex-col justify-center rounded-sm shadow-2xl">
           <h2 className="text-center mb-10">Please confirm purchase</h2>
           <div className="flex flex-row justify-center space-x-5">
             <button
@@ -48,10 +48,9 @@ const Modal = ({ setShowModal, purchaseConfirmed, setPurchaseConfirmed }) => {
         </div>
       )}
       {purchaseConfirmed && (
-        <div className="w-auto h-1/2 lg:w-1/3 lg:h-1/3 p-5 flex bg-green-600 flex-col justify-center rounded-lg shadow-2xl">
-          <h2 className="text-center text-white mb-3">
-            Purchase confirmed. Redirecting to home page
-          </h2>
+        <div className="w-auto h-auto p-10 flex flex-col justify-center border-2 rounded-lg shadow-2xl bg-white">
+          <h2 className="text-center mb-3">Purchase confirmed!</h2>
+          <p>Redirecting to home page..</p>
         </div>
       )}
     </div>

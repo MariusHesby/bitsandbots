@@ -3,7 +3,6 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import Checkout from "../components/layout/Checkout";
 import requests from "../utils/requests";
-
 import Modal from "../components/common/Modal";
 
 const defaultUrl = "https://api.rawg.io/api";
