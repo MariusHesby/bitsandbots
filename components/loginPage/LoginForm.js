@@ -76,7 +76,7 @@ export default function LoginForm() {
               placeholder="Email"
               {...register("email")}
               id="email"
-              className="border border-black p-2"
+              className="border border-gray-500 p-2 w-full"
             />
             {errors.email && <FormError>{errors.email.message}</FormError>}
           </div>
@@ -91,7 +91,7 @@ export default function LoginForm() {
               {...register("password")}
               type="password"
               id="password"
-              className="border border-black p-2"
+              className="border border-gray-500 p-2 w-full"
             />
             {errors.password && (
               <FormError>{errors.password.message}</FormError>
