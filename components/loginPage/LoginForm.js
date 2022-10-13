@@ -3,13 +3,9 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import axios from "axios";
 import FormError from "../common/FormError";
-import { WP_BASE_URL, TOKEN_PATH } from "../../constants/api";
 import AuthContext from "../../context/AuthContext";
 import Link from "next/link";
-
-const url = WP_BASE_URL + TOKEN_PATH;
 
 const schema = yup.object().shape({
   email: yup

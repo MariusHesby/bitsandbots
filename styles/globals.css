@@ -28,7 +28,7 @@
     @apply text-yellow-400;
   }
   .logo {
-    @apply absolute -top-8 left-5;
+    @apply absolute -top-3 sm:-top-8 left-5;
   }
   .logo-landingpage {
     @apply absolute top-5 left-5;

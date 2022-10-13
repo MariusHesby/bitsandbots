@@ -5,7 +5,7 @@ function Logo() {
   return (
     <Link href="/" passHref className="z-50">
       <a>
-        <div className="logo">
+        <div className="logo w-36 sm:w-full">
           <Image
             className="object-contain"
             src="/assets/header/bb_logo.svg"
