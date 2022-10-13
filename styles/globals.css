@@ -19,7 +19,7 @@
     @apply text-3xl font-bold;
   }
   h3 {
-    @apply text-xl;
+    @apply text-base sm:text-xl;
   }
   .cat {
     @apply cursor-pointer transition duration-100 transform bg-bitsBlue px-4 py-2 rounded-full text-white border-8 border-slate-100 hover:border-yellow-400;
@@ -28,7 +28,7 @@
     @apply text-yellow-400;
   }
   .logo {
-    @apply absolute -top-3 sm:-top-8 left-5;
+    @apply absolute -top-2 sm:-top-8 left-5;
   }
   .logo-landingpage {
     @apply absolute top-5 left-5;
