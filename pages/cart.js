@@ -5,7 +5,7 @@ import requests from "../utils/requests";
 
 export default function Cart() {
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       <Header />
       <CartItems />
       <Footer />

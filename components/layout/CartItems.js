@@ -21,35 +21,33 @@ function CartItems() {
   };
 
   return (
-    <>
-      <div className="px-5 my-10 flex flex-col max-w-6xl mx-auto">
-        <h2 className="my-10">Shopping cart</h2>
-        {cart.length > 0 ? (
-          cart.map((game) => (
-            <ThumbnailCart
-              key={game.id}
-              game={game}
-              removeFromCartHandler={removeFromCartHandler}
-            />
-          ))
-        ) : (
-          <h3 className="">No items in cart</h3>
-        )}
-        <Link href="/checkout">
-          <div className="flex space-x-2 my-10">
-            <button
-              type="button"
-              data-mdb-ripple="true"
-              data-mdb-ripple-color="light"
-              className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-md leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out disabled:bg-red-400 disabled:cursor-not-allowed"
-              disabled={cart.length < 1}
-            >
-              Checkout
-            </button>
-          </div>
-        </Link>
-      </div>
-    </>
+    <div className="px-5 my-10 flex flex-col max-w-6xl mx-auto w-full">
+      <h2 className="my-10">Shopping cart</h2>
+      {cart.length > 0 ? (
+        cart.map((game) => (
+          <ThumbnailCart
+            key={game.id}
+            game={game}
+            removeFromCartHandler={removeFromCartHandler}
+          />
+        ))
+      ) : (
+        <h3 className="">No items in cart</h3>
+      )}
+      <Link href="/checkout">
+        <div className="flex space-x-2 my-10">
+          <button
+            type="button"
+            data-mdb-ripple="true"
+            data-mdb-ripple-color="light"
+            className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-md leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out disabled:bg-red-400 disabled:cursor-not-allowed"
+            disabled={cart.length < 1}
+          >
+            Checkout
+          </button>
+        </div>
+      </Link>
+    </div>
   );
 }
 

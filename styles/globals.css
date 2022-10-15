@@ -4,10 +4,10 @@
 
 @layer components {
   html {
-    @apply scroll-smooth min-h-full;
+    @apply scroll-smooth;
   }
   body {
-    @apply bg-slate-100 min-h-full flex flex-col font-poppins tracking-wider;
+    @apply bg-slate-400 flex flex-col font-poppins tracking-wider;
   }
   a {
     @apply transition-all duration-200 ease-in-out;

@@ -4,7 +4,7 @@ import Image from "next/image";
 function LogoLogin() {
   return (
     <Link href="/loggedIn" passHref>
-      <div className="logo-landingpage w-28 sm:w-full">
+      <div className="logo-landingpage w-28 sm:w-auto">
         <Image
           className="object-contain"
           src="/assets/header/bb_logo.svg"
