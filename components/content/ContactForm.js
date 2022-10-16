@@ -6,9 +6,6 @@ import {
   LockClosedIcon,
   CreditCardIcon,
 } from "@heroicons/react/24/solid";
-// import valid from "card-validator"; //import statement
-
-// import Modal from "../common/Modal";
 
 const schema = yup.object().shape({
   fullName: yup
@@ -61,14 +58,12 @@ function ContactForm({ setShowModal }) {
           {/* --- NAME --- */}
           <div className="mb-3 relative max-w-xl flex flex-col">
             <label htmlFor="fullName" className="mb-1">
-              <h3 className="mt-8" className="mt-8">
-                Full name
-              </h3>
+              <h3 className="mt-8">Full name</h3>
             </label>
             <input
               type="text"
               {...register("fullName", { required: true })}
-              className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
+              className="rounded-md peer pl-6 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
               id="fullName"
               name="fullName"
               placeholder="Your name"
@@ -87,7 +82,7 @@ function ContactForm({ setShowModal }) {
             <input
               type="text"
               {...register("address", { required: true })}
-              className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
+              className="rounded-md peer pl-6 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
               id="address"
               name="address"
               placeholder="You address"
@@ -120,7 +115,7 @@ function ContactForm({ setShowModal }) {
             <span className="block text-red-600">{errors.cc.message}</span>
           )}
           {/* EXPIRE DATE */}
-          <div className="mb-3 relative max-w-xl flex flex-col">
+          <div className="mb-3 relative max-w-xs flex flex-col">
             <label htmlFor="expireDate" className="mb-1">
               <h3 className="mt-8">Expiration Date</h3>
             </label>
@@ -141,7 +136,7 @@ function ContactForm({ setShowModal }) {
             </span>
           )}
           {/* CCV */}
-          <div className="mb-3 relative max-w-xl flex flex-col">
+          <div className="mb-3 relative max-w-xs flex flex-col">
             <label htmlFor="ccv" className="mb-1">
               <h3 className="mt-8">CVC / CVV</h3>
             </label>
