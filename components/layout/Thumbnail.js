@@ -48,11 +48,11 @@ function Thumbnail({ result, cart, toggleAddToCartHandler }) {
             />
           </div>
 
-          <div className="p-2">
-            <h2 className="mt-1 text-2xl text-gray-500 transition-all duration-100 ease-in-out group-hover:font-bold">
+          <div>
+            <h2 className="mt-1 text-xl sm:text-2xl transition-all duration-100 ease-in-out group-hover:font-bold">
               {result.name}
             </h2>
-            <p className="opacity-0 group-hover:opacity-100">
+            <p className="opacity-0 group-hover:opacity-100 text-gray-500">
               Release date: {result.released}
             </p>
           </div>

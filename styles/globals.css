@@ -16,7 +16,7 @@
     @apply text-2xl sm:text-4xl lg:text-5xl xl:text-6xl;
   }
   h2 {
-    @apply text-2xl sm:text-3xl lg:text-4xl font-bold ml-5 lg:ml-0;
+    @apply text-2xl sm:text-3xl lg:text-4xl font-bold;
   }
   h3 {
     @apply text-base sm:text-xl;
@@ -25,7 +25,7 @@
     @apply cursor-pointer transition duration-100 transform bg-bitsBlue px-4 py-2 rounded-full text-white border-8 border-slate-100 hover:border-yellow-400;
   }
   .active {
-    @apply text-yellow-400;
+    @apply text-bitsYellow;
   }
   .logo {
     @apply absolute -top-2 sm:-top-8 left-5;
@@ -35,6 +35,15 @@
   }
   label {
     @apply font-bold;
+  }
+  .btn {
+    @apply inline-block px-6 py-3 font-medium leading-tight uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out;
+  }
+  .btn-green {
+    @apply bg-bitsGreen text-white hover:bg-bitsGreenDark focus:bg-bitsGreenDark disabled:bg-red-400 disabled:cursor-not-allowed;
+  }
+  .btn-white {
+    @apply border border-black hover:bg-bitsRed hover:text-white text-black;
   }
   .game-info br,
   .game-info p {

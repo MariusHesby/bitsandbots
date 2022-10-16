@@ -4,7 +4,7 @@
 //   return [
 //     {
 //       source: "/",
-//       destination: "/",
+//       destination: "/login",
 //       permanent: true,
 //     },
 //   ];
@@ -16,7 +16,6 @@ const nextConfig = {
   images: {
     domains: ["media.rawg.io"],
   },
-  // redirects: redirects,
 };
 
 module.exports = nextConfig;

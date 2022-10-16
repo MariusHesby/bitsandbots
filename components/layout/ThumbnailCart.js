@@ -21,7 +21,7 @@ function ThumbnailCart({ game, removeFromCartHandler }) {
           <h3 className="text-gray-500 cursor-pointer">{game.name}</h3>
         </Link>
         <button
-          className="flex w-8 text-red-600"
+          className="flex w-8 text-bitsRed"
           onClick={() => removeFromCartHandler(game)}
         >
           {/* <XCircleIcon /> */}

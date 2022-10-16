@@ -61,7 +61,9 @@ function ContactForm({ setShowModal }) {
           {/* --- NAME --- */}
           <div className="mb-3 relative max-w-xl flex flex-col">
             <label htmlFor="fullName" className="mb-1">
-              <span className="font-bold mb-3">Full name</span>
+              <h3 className="mt-8" className="mt-8">
+                Full name
+              </h3>
             </label>
             <input
               type="text"
@@ -80,7 +82,7 @@ function ContactForm({ setShowModal }) {
           {/* --- ADDRESS --- */}
           <div className="mb-3 relative max-w-xl flex flex-col">
             <label htmlFor="address" className="mb-1">
-              <span className="font-bold mb-3">Address</span>
+              <h3 className="mt-8">Address</h3>
             </label>
             <input
               type="text"
@@ -101,7 +103,7 @@ function ContactForm({ setShowModal }) {
           {/* --- CARD DETAILS --- */}
           <div className="mb-3 relative max-w-xl flex flex-col">
             <label htmlFor="cc" className="mb-1">
-              <span className="font-bold mb-3">Card Number</span>
+              <h3 className="mt-8">Card Number</h3>
             </label>
             <input
               type="number"
@@ -117,35 +119,10 @@ function ContactForm({ setShowModal }) {
           {errors.cc && (
             <span className="block text-red-600">{errors.cc.message}</span>
           )}
-
-          {/* --- CARD DETAILS --- */}
-
-          {/* <div className="mb-3 relative max-w-xl flex flex-col">
-          <label htmlFor="creditCard" className="mb-1">
-            <span className="font-bold mb-3">Card number</span>
-          </label>
-
-          <input
-            type="text"
-            // onInput={(e) => (e.target.value = e.target.value.slice(0, 16))}
-            {...register("creditCard", { required: true })}
-            className="rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300"
-            id="creditCard"
-            name="creditCard"
-            placeholder="0000 0000 0000 0000"
-          />
-          <CreditCardIcon className="absolute bottom-0 left-0 -mb-0.5 transform translate-x-1/2 -translate-y-1/2 text-black peer-placeholder-shown:text-gray-300 h-6 w-6" />
-          {errors.creditCard && (
-            <span className="block text-red-600">
-              {errors.creditCard.message}
-            </span>
-          )}
-        </div> */}
-
           {/* EXPIRE DATE */}
           <div className="mb-3 relative max-w-xl flex flex-col">
             <label htmlFor="expireDate" className="mb-1">
-              <span className="font-bold mb-3">Expire date</span>
+              <h3 className="mt-8">Expiration Date</h3>
             </label>
 
             <input
@@ -166,7 +143,7 @@ function ContactForm({ setShowModal }) {
           {/* CCV */}
           <div className="mb-3 relative max-w-xl flex flex-col">
             <label htmlFor="ccv" className="mb-1">
-              <span className="font-bold">CVC / CVV</span>
+              <h3 className="mt-8">CVC / CVV</h3>
             </label>
 
             <input
@@ -184,10 +161,7 @@ function ContactForm({ setShowModal }) {
             <span className="block text-red-600">{errors.cvc.message}</span>
           )}
         </div>
-        <button
-          className="bg-green-600 hover:bg-green-700 text-white py-3 px-5 rounded-lg mt-10"
-          type="submit"
-        >
+        <button className="btn btn-green mt-10" type="submit">
           Submit
         </button>
       </form>
@@ -196,26 +170,3 @@ function ContactForm({ setShowModal }) {
 }
 
 export default ContactForm;
-
-{
-  /* </form> */
-}
-
-{
-  /* <div className="mb-10">
-        <label htmlFor="creditCard" className="block">
-          Credit Card
-        </label>
-        <input
-          type="text"
-          {...register("creditCard", { required: true })}
-          className="border border-black p-1 rounded max-w-full"
-          id="creditCard"
-        />
-        {errors.creditCard && (
-          <span className="block text-red-600">
-            {errors.creditCard.message}
-          </span>
-        )}
-      </div> */
-}

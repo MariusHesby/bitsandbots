@@ -10,6 +10,11 @@ module.exports = {
       colors: {
         bitsBlue: "#0045FF",
         bitsBlueLight: "#4A7BFF",
+        bitsGreen: "#16A34A",
+        bitsGreenDark: "#15803D",
+        bitsGreenActive: "#15803D",
+        bitsRed: "#FF0000",
+        bitsYellow: "#FACC15",
         bitsGray: "#999",
         bitsGrayLight: "#ccc",
       },

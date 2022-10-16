@@ -32,16 +32,10 @@ const Modal = ({ setShowModal, purchaseConfirmed, setPurchaseConfirmed }) => {
         <div className="w-auto h-auto bg-white p-10 flex flex-col justify-center rounded-sm shadow-2xl">
           <h2 className="text-center mb-10">Please confirm purchase</h2>
           <div className="flex flex-row justify-center space-x-5">
-            <button
-              className=" bg-green-600 hover:bg-green-700 py-3 px-5 rounded-lg text-white"
-              onClick={onConfirmHandler}
-            >
+            <button className="btn btn-green" onClick={onConfirmHandler}>
               Confirm
             </button>
-            <button
-              className="py-3 px-5 rounded-lg border border-black hover:bg-red-600 hover:text-white"
-              onClick={onCancelHandler}
-            >
+            <button className="btn btn-white" onClick={onCancelHandler}>
               Cancel
             </button>
           </div>
