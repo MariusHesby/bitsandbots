@@ -7,7 +7,7 @@
     @apply scroll-smooth;
   }
   body {
-    @apply bg-slate-400 flex flex-col font-poppins tracking-wider;
+    @apply bg-slate-100 flex flex-col font-poppins tracking-wider;
   }
   a {
     @apply transition-all duration-200 ease-in-out;
@@ -16,7 +16,7 @@
     @apply text-2xl sm:text-4xl lg:text-5xl xl:text-6xl;
   }
   h2 {
-    @apply text-3xl font-bold;
+    @apply text-2xl sm:text-3xl lg:text-4xl font-bold ml-5 lg:ml-0;
   }
   h3 {
     @apply text-base sm:text-xl;

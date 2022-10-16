@@ -13,14 +13,6 @@ export default {
     title: "Adventure",
     url: `/games?genres=3&key=${API_KEY}`,
   },
-  RPG: {
-    title: "Action",
-    url: `/games?genres=5&key=${API_KEY}`,
-  },
-  fetchAdventure: {
-    title: "Adventure",
-    url: `/games?genres=3&key=${API_KEY}`,
-  },
   fetchRPG: {
     title: "RPG",
     url: `/games?genres=5&key=${API_KEY}`,

@@ -65,7 +65,7 @@ export default function Game({ data }) {
     <>
       <Header />
       <div className="max-w-6xl mx-auto my-5">
-        <h2 className="py-2 sm:py-5 text-4xl font-bold">{name}</h2>
+        <h2 className="py-2 sm:py-5 font-bold my-10">{name}</h2>
 
         <div className="relative">
           <div className="mb-10">
@@ -86,7 +86,7 @@ export default function Game({ data }) {
             />
           </div>
         </div>
-        <div className="game-info p-10">
+        <div className="game-info py-10 px-5 xl:px-0">
           <article>{description_raw}</article>
         </div>
       </div>
