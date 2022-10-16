@@ -27,7 +27,7 @@ npm install
 
 - Create a file called .env.local in root folder and insert your own API_KEY.
 - Get your API KEY [here!](https://rawg.io/apidocs)
-- Paste to .env.local: API_KEY=<your API KEY>
+- Paste to .env.local: API_KEY=_your API KEY_
 
 ### Running
 
