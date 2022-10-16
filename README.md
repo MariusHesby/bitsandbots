@@ -23,6 +23,12 @@ School project (Noroff):
 npm install
 ```
 
+### Create file for API KEY
+
+Create a file called .env.local in root folder and insert your own API_KEY.
+Get your API KEY [here!](https://rawg.io/apidocs)
+Paste to .env.local: API_KEY=_your API KEY_
+
 ### Running
 
 To run the app, run the following commands:
